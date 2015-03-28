@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 public class FlashCardModel {
     public var question: String = ""
     public var answer: String = ""
+    
     
     public init(question: String, answer: String){
         self.question = question

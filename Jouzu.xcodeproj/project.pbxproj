@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2A36251AC74DBF002220C0 /* FlashCardDeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A36241AC74DBF002220C0 /* FlashCardDeckModel.swift */; };
+		8E2A36271AC74EB3002220C0 /* FlashCardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A36261AC74EB3002220C0 /* FlashCardModelTests.swift */; };
 		8E7FDC601AC73AEA004490C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC5F1AC73AEA004490C3 /* AppDelegate.swift */; };
 		8E7FDC621AC73AEA004490C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC611AC73AEA004490C3 /* ViewController.swift */; };
 		8E7FDC651AC73AEA004490C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FDC631AC73AEA004490C3 /* Main.storyboard */; };
 		8E7FDC671AC73AEA004490C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FDC661AC73AEA004490C3 /* Images.xcassets */; };
 		8E7FDC6A1AC73AEA004490C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FDC681AC73AEA004490C3 /* LaunchScreen.xib */; };
 		8E7FDC761AC73AEA004490C3 /* JouzuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC751AC73AEA004490C3 /* JouzuTests.swift */; };
-		8E7FDC801AC73B08004490C3 /* FlashCardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC7F1AC73B08004490C3 /* FlashCardModelTests.swift */; };
 		8E7FDC821AC73B14004490C3 /* FlashCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC811AC73B14004490C3 /* FlashCardModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E2A36241AC74DBF002220C0 /* FlashCardDeckModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardDeckModel.swift; sourceTree = "<group>"; };
+		8E2A36261AC74EB3002220C0 /* FlashCardModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardModelTests.swift; sourceTree = "<group>"; };
 		8E7FDC5A1AC73AEA004490C3 /* Jouzu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jouzu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7FDC5E1AC73AEA004490C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E7FDC5F1AC73AEA004490C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +41,6 @@
 		8E7FDC6F1AC73AEA004490C3 /* JouzuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JouzuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7FDC741AC73AEA004490C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E7FDC751AC73AEA004490C3 /* JouzuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JouzuTests.swift; sourceTree = "<group>"; };
-		8E7FDC7F1AC73B08004490C3 /* FlashCardModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashCardModelTests.swift; path = ../Jouzu/FlashCardModelTests.swift; sourceTree = "<group>"; };
 		8E7FDC811AC73B14004490C3 /* FlashCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 			children = (
 				8E7FDC5F1AC73AEA004490C3 /* AppDelegate.swift */,
 				8E7FDC811AC73B14004490C3 /* FlashCardModel.swift */,
+				8E2A36241AC74DBF002220C0 /* FlashCardDeckModel.swift */,
 				8E7FDC611AC73AEA004490C3 /* ViewController.swift */,
 				8E7FDC631AC73AEA004490C3 /* Main.storyboard */,
 				8E7FDC661AC73AEA004490C3 /* Images.xcassets */,
@@ -103,7 +106,7 @@
 		8E7FDC721AC73AEA004490C3 /* JouzuTests */ = {
 			isa = PBXGroup;
 			children = (
-				8E7FDC7F1AC73B08004490C3 /* FlashCardModelTests.swift */,
+				8E2A36261AC74EB3002220C0 /* FlashCardModelTests.swift */,
 				8E7FDC751AC73AEA004490C3 /* JouzuTests.swift */,
 				8E7FDC731AC73AEA004490C3 /* Supporting Files */,
 			);
@@ -221,6 +224,7 @@
 				8E7FDC821AC73B14004490C3 /* FlashCardModel.swift in Sources */,
 				8E7FDC621AC73AEA004490C3 /* ViewController.swift in Sources */,
 				8E7FDC601AC73AEA004490C3 /* AppDelegate.swift in Sources */,
+				8E2A36251AC74DBF002220C0 /* FlashCardDeckModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E7FDC801AC73B08004490C3 /* FlashCardModelTests.swift in Sources */,
+				8E2A36271AC74EB3002220C0 /* FlashCardModelTests.swift in Sources */,
 				8E7FDC761AC73AEA004490C3 /* JouzuTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +419,7 @@
 				8E7FDC7B1AC73AEA004490C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E7FDC7C1AC73AEA004490C3 /* Build configuration list for PBXNativeTarget "JouzuTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +428,7 @@
 				8E7FDC7E1AC73AEA004490C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
