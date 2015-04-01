@@ -8,17 +8,20 @@
 
 import UIKit
 
-var flashCards = FlashCardDeckModel()
+var flashCardGame = FlashCardGameModel()
 var questionLabel = UILabel()
 var answerBox = UITextField()
+var guessButton = UIButton()
 
-class ViewController: UIViewController, UITextFieldDelegate {
+
+class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelDelegate {
+    
+    var delegate: FlashCardGameModelDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        setupFlashcards()
+        setupFlashCardGame()
         setupUI()
     }
 
@@ -26,48 +29,53 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func setupFlashcards(){
-        
-        var card1 = FlashCardModel(question: "thank you", answer: "ありがとう")
-        var card2 = FlashCardModel(question: "excuse me", answer: "すみません")
-        var card3 = FlashCardModel(question: "good afternoon", answer: "こんにちわ")
-        flashCards.addFlashCard(card1)
-        flashCards.addFlashCard(card2)
-        flashCards.addFlashCard(card3)
-    }
-    
 
     func setupUI(){
         //question label
-        var questionLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, 10, 100, 100))
-        questionLabel.text = flashCards.deck[0].question
+        questionLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, 10, 100, 100))
+        questionLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].question
+        
         self.view.addSubview(questionLabel)
         
         //answer label
-        var answerBox = UITextField(frame: CGRectMake(self.view.frame.size.width/2, 200, 100, 100))
+        answerBox = UITextField(frame: CGRectMake(self.view.frame.size.width/2, 200, 100, 100))
         answerBox.backgroundColor = UIColor.blueColor()
         answerBox.delegate = self
         self.view.addSubview(answerBox)
         
-        var guessButton = UIButton(frame: CGRectMake(self.view.frame.size.width/2, 300, 100, 100))
+        guessButton = UIButton(frame: CGRectMake(self.view.frame.size.width/2, 300, 100, 100))
         guessButton.backgroundColor = UIColor.orangeColor()
         guessButton.addTarget(self, action: "guessAction:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(guessButton)
     }
     
+    func updateUI(){
+        questionLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].question
+    }
+    
+    func setupFlashCardGame(){
+        flashCardGame.delegate = self
+    }
+    
     func guessAction(sender:UIButton!){
-        println("answer box text: " + "\(answerBox.text)" + " answer: " + "\(flashCards.deck[0].answer)")
-        flashCards.deck[0].guessAnswer(answerBox.text)
+        flashCardGame.guessAnswer(answerBox.text)
+        updateUI();
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         answerBox.text = textField.text
+        flashCardGame.guessAnswer(answerBox.text)
+        updateUI();
         return false;
     }
     func textFieldDidEndEditing(textField: UITextField) {
         println("\(textField.text)")
+    }
+    
+    func displayAlert(alert: UIAlertController) {
+        presentViewController(alert, animated: true, completion: nil)
+        answerBox.text = ""
     }
 }
 

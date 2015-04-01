@@ -11,10 +11,6 @@ import Jouzu
 
 class FlashCardModelTests: XCTestCase {
 
-    let myQuestion = "thank you"
-    let myAnswer = "ありがとう"
-    let myFlashCard = FlashCardModel(question: "thank you", answer: "ありがとう")
-
 
     override func setUp() {
         super.setUp()
@@ -34,9 +30,7 @@ class FlashCardModelTests: XCTestCase {
     }
 
     
-    func testGuess(){
-        XCTAssert(myFlashCard.guessAnswer("ありがとう"), "correct!")
-    }
+ 
     
 
 
