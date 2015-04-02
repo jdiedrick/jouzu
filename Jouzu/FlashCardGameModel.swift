@@ -22,17 +22,17 @@ public class FlashCardGameModel{
     
     public init(){
             
-        var card1 = FlashCardModel(question: "thank you", answer: "ありがとう")
-        var card2 = FlashCardModel(question: "excuse me", answer: "すみません")
-        var card3 = FlashCardModel(question: "good afternoon", answer: "こんにちわ")
+        var card1 = FlashCardModel(call: "thank you", response: "ありがとう")
+        var card2 = FlashCardModel(call: "excuse me", response: "すみません")
+        var card3 = FlashCardModel(call: "good afternoon", response: "こんにちわ")
         flashCardDeck.addFlashCard(card1)
         flashCardDeck.addFlashCard(card2)
         flashCardDeck.addFlashCard(card3)
         
     }
     
-    public func guessAnswer(guess: String) -> Bool{
-        if (guess == flashCardDeck.deck[currentCard].answer){
+    public func respond(guess: String) -> Bool{
+        if (guess == flashCardDeck.deck[currentCard].response){
             
             alert = UIAlertController(title: ":)", message: "Soo desu!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Tsugi!", style: UIAlertActionStyle.Default, handler: nil))

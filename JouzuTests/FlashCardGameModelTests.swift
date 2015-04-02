@@ -14,7 +14,7 @@ class FlashCardGameModelTests: XCTestCase {
     let myFlashCardGame = FlashCardGameModel()
     let myQuestion = "thank you"
     let myAnswer = "ありがとう"
-    let myFlashCard = FlashCardModel(question: "thank you", answer: "ありがとう")
+    let myFlashCard = FlashCardModel(call: "thank you", response: "ありがとう")
 
     
     override func setUp() {
@@ -42,7 +42,7 @@ class FlashCardGameModelTests: XCTestCase {
     }
     
     func testGuess(){
-        XCTAssert(myFlashCardGame.guessAnswer("ありがとう"), "correct!")
+        XCTAssert(myFlashCardGame.respond("ありがとう"), "correct!")
     }
 
 }

@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 public class FlashCardModel {
-    public var question: String = ""
-    public var answer: String = ""
+    public var call: String = ""
+    public var response: String = ""
     
-    public init(question: String, answer: String){
-        self.question = question
-        self.answer = answer
+    public init(call: String, response: String){
+        self.call = call
+        self.response = response
     }
     
 }

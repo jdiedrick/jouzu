@@ -9,9 +9,9 @@
 import UIKit
 
 var flashCardGame = FlashCardGameModel()
-var questionLabel = UILabel()
-var answerBox = UITextField()
-var guessButton = UIButton()
+var callLabel = UILabel()
+var responseBox = UITextField()
+var respondButton = UIButton()
 
 
 class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelDelegate {
@@ -32,25 +32,25 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
 
     func setupUI(){
         //question label
-        questionLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, 10, 100, 100))
-        questionLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].question
+        callLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, 10, 100, 100))
+        callLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].call
         
-        self.view.addSubview(questionLabel)
+        self.view.addSubview(callLabel)
         
         //answer label
-        answerBox = UITextField(frame: CGRectMake(self.view.frame.size.width/2, 200, 100, 100))
-        answerBox.backgroundColor = UIColor.blueColor()
-        answerBox.delegate = self
-        self.view.addSubview(answerBox)
+        responseBox = UITextField(frame: CGRectMake(self.view.frame.size.width/2, 200, 100, 100))
+        responseBox.backgroundColor = UIColor.blueColor()
+        responseBox.delegate = self
+        self.view.addSubview(responseBox)
         
-        guessButton = UIButton(frame: CGRectMake(self.view.frame.size.width/2, 300, 100, 100))
-        guessButton.backgroundColor = UIColor.orangeColor()
-        guessButton.addTarget(self, action: "guessAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(guessButton)
+        respondButton = UIButton(frame: CGRectMake(self.view.frame.size.width/2, 300, 100, 100))
+        respondButton.backgroundColor = UIColor.orangeColor()
+        respondButton.addTarget(self, action: "guessAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(respondButton)
     }
     
     func updateUI(){
-        questionLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].question
+        callLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].call
     }
     
     func setupFlashCardGame(){
@@ -58,14 +58,14 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
     }
     
     func guessAction(sender:UIButton!){
-        flashCardGame.guessAnswer(answerBox.text)
+        flashCardGame.respond(responseBox.text)
         updateUI();
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        answerBox.text = textField.text
-        flashCardGame.guessAnswer(answerBox.text)
+        responseBox.text = textField.text
+        flashCardGame.respond(responseBox.text)
         updateUI();
         return false;
     }
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
     
     func displayAlert(alert: UIAlertController) {
         presentViewController(alert, animated: true, completion: nil)
-        answerBox.text = ""
+        responseBox.text = ""
     }
 }
 
