@@ -12,6 +12,7 @@
 		8E2A36271AC74EB3002220C0 /* FlashCardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A36261AC74EB3002220C0 /* FlashCardModelTests.swift */; };
 		8E4670C31AC9184600DD1E5F /* FlashCardGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4670C21AC9184600DD1E5F /* FlashCardGameModel.swift */; };
 		8E4670C51AC91ABF00DD1E5F /* FlashCardGameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4670C41AC91ABF00DD1E5F /* FlashCardGameModelTests.swift */; };
+		8E59157B1ACDE55B0056BB20 /* FlashCardDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59157A1ACDE55B0056BB20 /* FlashCardDatabaseManager.swift */; };
 		8E7FDC601AC73AEA004490C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC5F1AC73AEA004490C3 /* AppDelegate.swift */; };
 		8E7FDC621AC73AEA004490C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FDC611AC73AEA004490C3 /* ViewController.swift */; };
 		8E7FDC651AC73AEA004490C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FDC631AC73AEA004490C3 /* Main.storyboard */; };
@@ -33,10 +34,12 @@
 
 /* Begin PBXFileReference section */
 		81A78FE42522ECF16EBE12CF /* Pods-Jouzu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jouzu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jouzu/Pods-Jouzu.debug.xcconfig"; sourceTree = "<group>"; };
+		8E186CF51AD650B500F9B232 /* japanese.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = japanese.sqlite; path = db/japanese.sqlite; sourceTree = "<group>"; };
 		8E2A36241AC74DBF002220C0 /* FlashCardDeckModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardDeckModel.swift; sourceTree = "<group>"; };
 		8E2A36261AC74EB3002220C0 /* FlashCardModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardModelTests.swift; sourceTree = "<group>"; };
 		8E4670C21AC9184600DD1E5F /* FlashCardGameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardGameModel.swift; sourceTree = "<group>"; };
 		8E4670C41AC91ABF00DD1E5F /* FlashCardGameModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardGameModelTests.swift; sourceTree = "<group>"; };
+		8E59157A1ACDE55B0056BB20 /* FlashCardDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardDatabaseManager.swift; sourceTree = "<group>"; };
 		8E7FDC5A1AC73AEA004490C3 /* Jouzu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jouzu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7FDC5E1AC73AEA004490C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E7FDC5F1AC73AEA004490C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		8E7FDC741AC73AEA004490C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E7FDC751AC73AEA004490C3 /* JouzuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JouzuTests.swift; sourceTree = "<group>"; };
 		8E7FDC811AC73B14004490C3 /* FlashCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardModel.swift; sourceTree = "<group>"; };
+		8EFB5A861ACDB0C00017F23E /* Jouzu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jouzu-Bridging-Header.h"; sourceTree = "<group>"; };
 		BCBB9FF0B97E04560AC51D30 /* Pods_Jouzu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jouzu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8590EFC719BB53AD01D5B17 /* Pods-Jouzu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jouzu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jouzu/Pods-Jouzu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,9 +75,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E5915791ACDDE470056BB20 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				8E186CF51AD650B500F9B232 /* japanese.sqlite */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
 		8E7FDC511AC73AEA004490C3 = {
 			isa = PBXGroup;
 			children = (
+				8EFB5A861ACDB0C00017F23E /* Jouzu-Bridging-Header.h */,
+				8E5915791ACDDE470056BB20 /* db */,
 				8E7FDC5C1AC73AEA004490C3 /* Jouzu */,
 				8E7FDC721AC73AEA004490C3 /* JouzuTests */,
 				8E7FDC5B1AC73AEA004490C3 /* Products */,
@@ -97,6 +111,7 @@
 				8E7FDC5F1AC73AEA004490C3 /* AppDelegate.swift */,
 				8E7FDC811AC73B14004490C3 /* FlashCardModel.swift */,
 				8E4670C21AC9184600DD1E5F /* FlashCardGameModel.swift */,
+				8E59157A1ACDE55B0056BB20 /* FlashCardDatabaseManager.swift */,
 				8E2A36241AC74DBF002220C0 /* FlashCardDeckModel.swift */,
 				8E7FDC611AC73AEA004490C3 /* ViewController.swift */,
 				8E7FDC631AC73AEA004490C3 /* Main.storyboard */,
@@ -303,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E7FDC821AC73B14004490C3 /* FlashCardModel.swift in Sources */,
+				8E59157B1ACDE55B0056BB20 /* FlashCardDatabaseManager.swift in Sources */,
 				8E7FDC621AC73AEA004490C3 /* ViewController.swift in Sources */,
 				8E7FDC601AC73AEA004490C3 /* AppDelegate.swift in Sources */,
 				8E4670C31AC9184600DD1E5F /* FlashCardGameModel.swift in Sources */,
@@ -353,7 +369,7 @@
 		8E7FDC771AC73AEA004490C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -384,18 +400,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Debug;
 		};
 		8E7FDC781AC73AEA004490C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -420,9 +438,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -432,10 +452,13 @@
 			baseConfigurationReference = 81A78FE42522ECF16EBE12CF /* Pods-Jouzu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Jouzu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Jouzu-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -444,10 +467,13 @@
 			baseConfigurationReference = C8590EFC719BB53AD01D5B17 /* Pods-Jouzu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Jouzu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Jouzu-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -466,6 +492,7 @@
 				INFOPLIST_FILE = JouzuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jouzu.app/Jouzu";
 			};
 			name = Debug;
@@ -481,6 +508,7 @@
 				INFOPLIST_FILE = JouzuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jouzu.app/Jouzu";
 			};
 			name = Release;

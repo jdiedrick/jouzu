@@ -22,7 +22,28 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupFlashCardGame()
-        setupUI()
+        //setupUI()
+        
+        //testing db
+        
+        var isInserted = FlashCardDatabaseManager.instance.addCallAndResponse()
+        if isInserted{
+            println("is inserted")
+            }else{
+                println("not inserted")
+            }
+        
+        if let rs = FlashCardDatabaseManager.instance.getCallAndResponse(){
+            while rs.next() {
+                let call = rs.stringForColumn("call")
+                let response = rs.stringForColumn("response")
+                // println("vc call = \(x); vc response = \(y);")
+                let card = FlashCardModel(call: call, response: response)
+                flashCardGame.flashCardDeck.addFlashCard(card)
+            }
+        }
+        
+        setupUI();
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,13 +53,13 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
 
     func setupUI(){
         //question label
-        callLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2, 10, 100, 100))
+        callLabel = UILabel(frame: CGRectMake(0, 10, self.view.frame.size.width, 100))
         callLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].call
         
         self.view.addSubview(callLabel)
         
         //answer label
-        responseBox = UITextField(frame: CGRectMake(self.view.frame.size.width/2, 200, 100, 100))
+        responseBox = UITextField(frame: CGRectMake(0, 200, self.view.frame.size.width, 100))
         responseBox.backgroundColor = UIColor.blueColor()
         responseBox.delegate = self
         self.view.addSubview(responseBox)

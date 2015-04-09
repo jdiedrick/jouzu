@@ -22,16 +22,17 @@ public class FlashCardGameModel{
     
     public init(){
             
-        var card1 = FlashCardModel(call: "thank you", response: "ありがとう")
-        var card2 = FlashCardModel(call: "excuse me", response: "すみません")
-        var card3 = FlashCardModel(call: "good afternoon", response: "こんにちわ")
-        flashCardDeck.addFlashCard(card1)
-        flashCardDeck.addFlashCard(card2)
-        flashCardDeck.addFlashCard(card3)
+        //var card1 = FlashCardModel(call: "thank you", response: "ありがとう")
+        //var card2 = FlashCardModel(call: "excuse me", response: "すみません")
+        //var card3 = FlashCardModel(call: "good afternoon", response: "こんにちわ")
+        //flashCardDeck.addFlashCard(card1)
+        //flashCardDeck.addFlashCard(card2)
+        //flashCardDeck.addFlashCard(card3)
         
     }
     
     public func respond(guess: String) -> Bool{
+        println("guess: \(guess) | answer: \(flashCardDeck.deck[currentCard].response)")
         if (guess == flashCardDeck.deck[currentCard].response){
             
             alert = UIAlertController(title: ":)", message: "Soo desu!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -60,6 +61,10 @@ public class FlashCardGameModel{
         delegate?.displayAlert(alert)
     }
     
+    public func startDB(){
+        let db = FMDatabase(path: "")
+
+    }
 
     
 }
