@@ -15,7 +15,7 @@ public class FlashCardDeckModel{
         
     }
     
-    func addFlashCard(flashcard : FlashCardModel){
+    public func addFlashCard(flashcard : FlashCardModel){
         deck.append(flashcard)
     }
 }

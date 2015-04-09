@@ -8,41 +8,24 @@
 
 import XCTest
 import Jouzu
+import Quick
+import Nimble
 
-class FlashCardGameModelTests: XCTestCase {
 
-    let myFlashCardGame = FlashCardGameModel()
-    let myQuestion = "thank you"
-    let myAnswer = "ありがとう"
-    let myFlashCard = FlashCardModel(call: "thank you", response: "ありがとう")
-
+class FlashCardGameModelTests: QuickSpec {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+   override func spec() {
+    it("is correct"){
+
+        let myFlashCardGame : FlashCardGameModel = FlashCardGameModel()
+        let myFlashCard = FlashCardModel(call: "thank you", response: "ありがとう")
         
-        myFlashCardGame.flashCardDeck.deck.append(myFlashCard)
-    }
+        myFlashCardGame.flashCardDeck.addFlashCard(myFlashCard)
+        
+        expect(myFlashCardGame.respond("ありがとう")).to(beTruthy())
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
         }
-    }
-    
-    func testGuess(){
-        XCTAssert(myFlashCardGame.respond("ありがとう"), "correct!")
     }
 
 }

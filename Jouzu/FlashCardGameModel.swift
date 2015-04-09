@@ -32,7 +32,7 @@ public class FlashCardGameModel{
     }
     
     public func respond(guess: String) -> Bool{
-        println("guess: \(guess) | answer: \(flashCardDeck.deck[currentCard].response)")
+       // println("guess: \(guess) | answer: \(flashCardDeck.deck[currentCard].response)")
         if (guess == flashCardDeck.deck[currentCard].response){
             
             alert = UIAlertController(title: ":)", message: "Soo desu!", preferredStyle: UIAlertControllerStyle.Alert)
