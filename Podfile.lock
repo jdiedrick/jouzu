@@ -4,17 +4,17 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
-  - Nimble (0.3.1)
-  - Quick (0.2.3)
+  - Nimble (0.4.2)
+  - Quick (0.3.1)
 
 DEPENDENCIES:
   - FMDB
-  - Nimble (~> 0.3.0)
-  - Quick (~> 0.2.0)
+  - Nimble (~> 0.4.0)
+  - Quick (~> 0.3.0)
 
 SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
-  Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f
-  Quick: 2c59914d3b2548a0e8ed0288062d965d9bab03e2
+  Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
+  Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
 
 COCOAPODS: 0.36.3

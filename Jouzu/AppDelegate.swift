@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [NSObject: AnyObject]?) -> Bool {
-            
-            self.copyFile("japanese.sqlite")
         // Override point for customization after application launch.
         return true
     }
@@ -43,23 +41,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-   func getPath(fileName: String) -> String {
-        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0].stringByAppendingPathComponent(fileName)
-    }
-    
-    func copyFile(fileName: NSString) {
-        var dbPath: NSString = getPath(fileName)
-        var fileManager = NSFileManager.defaultManager()
-       // if !fileManager.fileExistsAtPath(dbPath) {
-            println("copying")
-            var fromPath: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent(fileName)
-            fileManager.copyItemAtPath(fromPath, toPath: dbPath, error: nil)
-      //  }
-    }
-
-
 }
-
-
-

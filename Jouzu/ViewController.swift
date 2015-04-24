@@ -22,22 +22,12 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupFlashCardGame()
-        //setupUI()
-        
-        //testing db
-        
-        var isInserted = FlashCardDatabaseManager.instance.addCallAndResponse()
-        if isInserted{
-            println("is inserted")
-            }else{
-                println("not inserted")
-            }
         
         if let rs = FlashCardDatabaseManager.instance.getCallAndResponse(){
             while rs.next() {
                 let call = rs.stringForColumn("call")
                 let response = rs.stringForColumn("response")
-                // println("vc call = \(x); vc response = \(y);")
+                println("vc call = \(call); vc response = \(response);")
                 let card = FlashCardModel(call: call, response: response)
                 flashCardGame.flashCardDeck.addFlashCard(card)
             }

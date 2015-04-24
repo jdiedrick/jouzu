@@ -11,7 +11,6 @@ import Jouzu
 import Quick
 import Nimble
 
-
 class FlashCardGameModelTests: QuickSpec {
     
     

@@ -8,7 +8,7 @@ end
 
 target 'JouzuTests', :exclusive => true do
 	use_frameworks!
-	pod 'Quick', '~> 0.2.0'
-	pod 'Nimble', '~> 0.3.0'
+	pod 'Quick', '~>0.3.0' #, '~> 0.2.0'
+	pod 'Nimble', '~> 0.4.0' #, '~> 0.3.0'
 end
 

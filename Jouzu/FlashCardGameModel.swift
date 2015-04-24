@@ -22,12 +22,6 @@ public class FlashCardGameModel{
     
     public init(){
             
-        //var card1 = FlashCardModel(call: "thank you", response: "ありがとう")
-        //var card2 = FlashCardModel(call: "excuse me", response: "すみません")
-        //var card3 = FlashCardModel(call: "good afternoon", response: "こんにちわ")
-        //flashCardDeck.addFlashCard(card1)
-        //flashCardDeck.addFlashCard(card2)
-        //flashCardDeck.addFlashCard(card3)
         
     }
     
@@ -63,8 +57,14 @@ public class FlashCardGameModel{
     
     public func startDB(){
         let db = FMDatabase(path: "")
-
     }
 
-    
+    public func loadDummyData(){
+        var card1 = FlashCardModel(call: "thank you", response: "ありがとう")
+        var card2 = FlashCardModel(call: "excuse me", response: "すみません")
+        var card3 = FlashCardModel(call: "good afternoon", response: "こんにちわ")
+        flashCardDeck.addFlashCard(card1)
+        flashCardDeck.addFlashCard(card2)
+        flashCardDeck.addFlashCard(card3)
+    }
 }
