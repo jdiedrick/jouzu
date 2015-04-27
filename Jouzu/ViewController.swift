@@ -9,7 +9,7 @@
 import UIKit
 
 var flashCardGame = FlashCardGameModel()
-var callLabel = UILabel()
+var callLabel = UITextView()
 var responseBox = UITextField()
 var respondButton = UIButton()
 
@@ -23,6 +23,30 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         // Do any additional setup after loading the view, typically from a nib.
         setupFlashCardGame()
         
+        setupDB()
+        
+        setupUI();
+        
+        setupTap();
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: Flashcard Game
+    func setupFlashCardGame(){
+        flashCardGame.delegate = self
+    }
+
+    func guessAction(sender:UIButton!){
+        flashCardGame.respond(responseBox.text)
+        updateUI();
+    }
+    
+    // MARK: DB
+    func setupDB(){
         if let rs = FlashCardDatabaseManager.instance.getCallAndResponse(){
             while rs.next() {
                 let call = rs.stringForColumn("call")
@@ -32,46 +56,67 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
                 flashCardGame.flashCardDeck.addFlashCard(card)
             }
         }
-        
-        setupUI();
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    // MARK: UI
 
     func setupUI(){
         //question label
-        callLabel = UILabel(frame: CGRectMake(0, 10, self.view.frame.size.width, 100))
+        callLabel = UITextView(frame:
+            CGRectMake(
+                30,
+                (self.view.frame.size.height/2)-30-50,
+                self.view.frame.size.width-60,
+                50))
         callLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].call
-        
+        callLabel.layer.borderColor = UIColor.greenColor().CGColor
+        callLabel.layer.borderWidth = 2.0
+        callLabel.textContainerInset = UIEdgeInsetsMake(15, 0, 15, 0)
+        callLabel.editable = false
         self.view.addSubview(callLabel)
         
         //answer label
-        responseBox = UITextField(frame: CGRectMake(0, 200, self.view.frame.size.width, 100))
-        responseBox.backgroundColor = UIColor.blueColor()
+        responseBox = UITextField(frame:
+            CGRectMake(
+            30,
+            (self.view.frame.size.height/2)+30,
+            self.view.frame.size.width-60,
+            50))
+        responseBox.layer.borderColor = UIColor.greenColor().CGColor
+        responseBox.layer.borderWidth = 2.0
         responseBox.delegate = self
         self.view.addSubview(responseBox)
         
+        let midLine = UIView(frame: CGRectMake(0, self.view.frame.size.height/2, self.view.frame.size.width, 3))
+        midLine.backgroundColor = UIColor.purpleColor()
+       self.view.addSubview(midLine)
+        
+        /*
         respondButton = UIButton(frame: CGRectMake(self.view.frame.size.width/2, 300, 100, 100))
         respondButton.backgroundColor = UIColor.orangeColor()
         respondButton.addTarget(self, action: "guessAction:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(respondButton)
+        */
     }
     
     func updateUI(){
         callLabel.text = flashCardGame.flashCardDeck.deck[flashCardGame.currentCard].call
     }
+
+    //MARK: Tap Gesture
     
-    func setupFlashCardGame(){
-        flashCardGame.delegate = self
+    func setupTap(){
+        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
-    func guessAction(sender:UIButton!){
-        flashCardGame.respond(responseBox.text)
-        updateUI();
+    //Calls this function when the tap is recognized.
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
+    
+    //MARK: TextField Delegate Methods
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -89,7 +134,6 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         animateViewMoving(false, moveValue: 100)
     }
     
-    
     func animateViewMoving (up:Bool, moveValue :CGFloat){
         var movementDuration:NSTimeInterval = 0.3
         var movement:CGFloat = ( up ? -moveValue : moveValue)
@@ -99,10 +143,10 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
         UIView.commitAnimations()
     }
-    
+   
+    // MARK: Alert
     func displayAlert(alert: UIAlertController) {
         presentViewController(alert, animated: true, completion: nil)
         responseBox.text = ""
     }
 }
-
