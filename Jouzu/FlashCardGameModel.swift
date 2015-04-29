@@ -33,7 +33,8 @@ public class FlashCardGameModel{
             alert.addAction(UIAlertAction(title: "Tsugi!", style: UIAlertActionStyle.Default, handler: nil))
             displayAlert(alert)
 
-            currentCard++;
+            //currentCard++;
+            currentCard = random() % flashCardDeck.deck.count
             
             if (currentCard == flashCardDeck.deck.count){
                 currentCard=0;
