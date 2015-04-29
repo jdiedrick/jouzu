@@ -28,6 +28,8 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         setupUI();
         
         setupTap();
+        
+        setupNotificaitons();
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,5 +150,15 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
     func displayAlert(alert: UIAlertController) {
         presentViewController(alert, animated: true, completion: nil)
         responseBox.text = ""
+    }
+    
+    // MARK: Notifications
+    func setupNotificaitons(){
+        var localNotification:UILocalNotification = UILocalNotification()
+        localNotification.alertAction = "Study Reminder"
+        localNotification.alertBody = "Take a 5 minute break to practice!"
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+        localNotification.repeatInterval = .CalendarUnitHour
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
 }
