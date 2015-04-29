@@ -42,7 +42,9 @@ public class FlashCardGameModel{
             return true
         }else{
             
-            alert = UIAlertController(title: ":(", message: "Chigau...", preferredStyle: UIAlertControllerStyle.Alert)
+            alert = UIAlertController(title: ":(",
+                message: "Chigau...\n\(flashCardDeck.deck[currentCard].response)",
+                preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Try again!", style: UIAlertActionStyle.Default, handler: nil))
             displayAlert(alert)
 
