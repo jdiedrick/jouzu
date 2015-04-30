@@ -32,13 +32,8 @@ public class FlashCardGameModel{
             alert = UIAlertController(title: ":)", message: "Soo desu!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Tsugi!", style: UIAlertActionStyle.Default, handler: nil))
             displayAlert(alert)
-
-            //currentCard++;
-            currentCard = random() % flashCardDeck.deck.count
             
-            if (currentCard == flashCardDeck.deck.count){
-                currentCard=0;
-            }
+            getNextCard()
             
             return true
         }else{
@@ -69,5 +64,15 @@ public class FlashCardGameModel{
         flashCardDeck.addFlashCard(card1)
         flashCardDeck.addFlashCard(card2)
         flashCardDeck.addFlashCard(card3)
+    }
+    
+    public func getNextCard(){
+    currentCard = Int(arc4random_uniform(UInt32(flashCardDeck.deck.count)))
+            //currentCard = random() % flashCardDeck.deck.count
+            //currentCard++;
+            
+            if (currentCard == flashCardDeck.deck.count){
+                currentCard=0;
+            }
     }
 }

@@ -23,8 +23,6 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
         // Do any additional setup after loading the view, typically from a nib.
         setupFlashCardGame()
         
-        setupDB()
-        
         setupUI();
         
         setupTap();
@@ -40,15 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
     // MARK: Flashcard Game
     func setupFlashCardGame(){
         flashCardGame.delegate = self
-    }
 
-    func guessAction(sender:UIButton!){
-        flashCardGame.respond(responseBox.text)
-        updateUI();
-    }
-    
-    // MARK: DB
-    func setupDB(){
         if let rs = FlashCardDatabaseManager.instance.getCallAndResponse(){
             while rs.next() {
                 let call = rs.stringForColumn("call")
@@ -58,6 +48,13 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
                 flashCardGame.flashCardDeck.addFlashCard(card)
             }
         }
+        
+        flashCardGame.getNextCard()
+    }
+
+    func guessAction(sender:UIButton!){
+        flashCardGame.respond(responseBox.text)
+        updateUI();
     }
     
     // MARK: UI
@@ -154,10 +151,15 @@ class ViewController: UIViewController, UITextFieldDelegate, FlashCardGameModelD
     
     // MARK: Notifications
     func setupNotificaitons(){
+        
+        //cancel all previous notifications
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        //setup a new notification
         var localNotification:UILocalNotification = UILocalNotification()
         localNotification.alertAction = "Study Reminder"
         localNotification.alertBody = "Take a 5 minute break to practice!"
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 60*60) //one hour
         localNotification.repeatInterval = .CalendarUnitHour
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
